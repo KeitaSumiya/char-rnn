@@ -30,6 +30,7 @@ cmd:option('-sample',1,' 0 to use max at each timestep, 1 to sample at each time
 cmd:option('-primetext',"",'used as a prompt to "seed" the state of the LSTM using a given sequence, before we sample.')
 cmd:option('-length',2000,'number of characters to sample')
 cmd:option('-temperature',1,'temperature of sampling')
+cmd:option('-flush',0,'flush output after each character')
 cmd:option('-gpuid',0,'which gpu to use. -1 = use CPU')
 cmd:option('-verbose',1,'set to 0 to ONLY print the sampled text, no diagnostics')
 cmd:text()
@@ -132,6 +133,9 @@ for i=1, opt.length do
     prediction = lst[#lst] -- last element holds the log probabilities
 
     io.write(ivocab[prev_char[1]])
+    if opt.flush == 1 then
+        io.flush()
+    end
 end
 io.write('\n') io.flush()
 
