@@ -270,7 +270,7 @@ for i = 1, iterations do
         local val_loss = eval_split(2) -- 2 = validation
         val_losses[i] = val_loss
 
-        local savefile = string.format('%s/%s_%.2fe_%.0fx%.0f_%.2fd_$.0f_%.4fl.t7', opt.checkpoint_dir, opt.savefile, epoch, opt.num_layers, opt.rnn_size, opt.dropout, opt.seq_length, val_loss)
+        local savefile = string.format('%s/%s_%.2fe_%.0fx%.0f_%.2fd_%.0f_%.4fl.t7', opt.checkpoint_dir, opt.savefile, epoch, opt.num_layers, opt.rnn_size, opt.dropout, opt.seq_length, val_loss)
         print('saving checkpoint to ' .. savefile)
         local checkpoint = {}
         checkpoint.protos = protos
